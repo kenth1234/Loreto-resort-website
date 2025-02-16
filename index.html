@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loreto Beach Resort</title>
+    <style>
+        /* General body and styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white; /* Add this line to set all text to white */
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(42, 38, 38, 0.5); /* Semi-transparent background for the nav */
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: inline-flex;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: rgba(251, 245, 245, 0.897);
+        }
+
+        /* Search Section */
+        #search {
+            background-image: url('https://scontent.fmnl17-3.fna.fbcdn.net/v/t1.15752-9/476184478_1736125353899281_3423177301876291026_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeEfs3zWcYyeJ3YrGMLPxmzhPcrnIHE108c9yucgcTXTxxY9y_sMaSPgQiW4y_Fn6ajS1t703nU9zdi5tE65f50M&_nc_ohc=GLKQq2RSysIQ7kNvgE8-0-e&_nc_oc=AdirAq-_t7-fFlB66_WnxJkTlSHDfkNLP0j4nOgBbjVmZ7lDFzCptQYczH8T9mmLy6c&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&oh=03_Q7cD1gF6u9AXaeU5NkrPlwj-S0QWwH8k-LdwlJ6iEhpGNgDrNA&oe=67D251E2');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 250px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Applying opacity to the background image */
+        #search::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(7, 7, 7, 0.5); /* 50% opacity black overlay */
+            z-index: 1;
+        }
+
+        #search h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        #search form {
+            display: inline-block;
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        #search input[type="text"] {
+            padding: 10px;
+            font-size: 1rem;
+            width: 300px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        #search button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #search button:hover {
+            background-color: #0077a2;
+        }
+
+        /* Hide the cottages by default */
+        .cottage {
+            display: none;
+        }
+
+        /* Hide the map by default */
+        #mapContainer {
+            display: none;
+        }
+        
+        h2, h3, p {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li> <!-- Fixed link to 'contact.html' -->
+            <li><a href="about-resort.html">About</a></li> <!-- Fixed link to 'about-resort.html' -->
+            <li><a href="map.html">Location</a></li> <!-- Fixed link to 'map.html' -->
+        </ul>
+    </nav>
+
+    <!-- Search Section with Background Image -->
+    <section id="search">
+        <div class="container">
+            <h2>Welcome to Loreto Beach Resort</h2>
+        </div>
+
+        <!-- Cottage 1 -->
+        <div class="cottage" data-name="Cottage 1">
+            <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t1.15752-9/476767882_620557540707351_7384251031653106724_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=qLZ0mo8io6IQ7kNvgH3sjNm&_nc_oc=AdixGvqdZUCahyBsfHTBEuMuTe5kjhPHCM-ZaXpip7pWEgqTYDquUM_9JIcSkx5OTIo&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&oh=03_Q7cD1gHdk9eBxWhJSY_GHQEZufHrihyQoFv7bQooIMM_zZpHYw&oe=67D8E30E" alt="Cottage 1">
+            <h3>Cottage 1</h3>
+            <p class="price">450h per night</p>
+            <p class="price">350h per day</p>
+        </div>
+
+        <!-- Cottage 2 -->
+        <div class="cottage" data-name="Cottage 2">
+            <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t1.15752-9/477303245_1736557127203386_3383404263076576522_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=9f807c&_nc_ohc=eS4YERvXcl4Q7kNvgHL2_pU&_nc_oc=AdjRZFUgdsmncWyR1uulcxi7O74epTr5rFNEHnzTCqzveAvJv1tiKK_5XoMGqjfM2Mk&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&oh=03_Q7cD1gHWYQhKC33hZsxCeHOYU1ZUbd3WxfjC96T64zTRbD4WZQ&oe=67D8D9A5" alt="Cottage 2">
+            <h3>Cottage 2</h3>
+            <p class="price">450h per night</p>
+            <p class="price">400h per day</p>
+        </div>
+
+        <!-- Cottage 3 -->
+        <div class="cottage" data-name="Cottage 3">
+            <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t1.15752-9/476407129_1289695625625385_268262489790444100_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=PLVCwWqlu_MQ7kNvgFTQaq-&_nc_oc=AdjfjsanQ4E56yiLx1dn6GMKy03xZmKIVo-6P-RO8Bwl2aPiCpA2V_DiExEqKkwngQo&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&oh=03_Q7cD1gGK2WTYm-P4YhZNAL2eeSpcKwylvT1Bam6DkVUs4yGQsg&oe=67D8C88C" alt="Cottage 3">
+            <h3>Cottage 3</h3>
+            <p class="price">500h per night</p>
+            <p class="price">450h per day</p>
+        </div>
+
+        <!-- Cottage 4 -->
+        <div class="cottage" data-name="Cottage 4">
+            <img src="https://scontent.fmnl17-5.fna.fbcdn.net/v/t1.15752-9/475658196_1294666478529231_552955135015003570_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=9f807c&_nc_ohc=Ob2Im5pXqzMQ7kNvgE8JTF5&_nc_oc=AdjPQIjzbO2mpCHBS6H86ev9mmobXOM6zeaq--qyA9zf0CZB1IU2_eaiW_LdBToA3bI&_nc_zt=23&_nc_ht=scontent.fmnl17-5.fna&oh=03_Q7cD1gE8AYzehgnwklhHf8n0zxWPmF5G32dNDeozM-LifyoUcA&oe=67D8EB9A" alt="Cottage 4">
+            <h3>Cottage 4</h3>
+            <p class="price">550h per night</p>
+            <p class="price">500h per day</p>
+        </div>
+
+        <!-- Cottage 5 -->
+        <div class="cottage" data-name="Cottage 5">
+            <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t1.15752-9/474140512_1165368298306245_6957332259639284733_n.png?stp=dst-png_p526x395&_nc_cat=103&ccb=1-7&_nc_sid=0024fc&_nc_ohc=hwDRXNHP5esQ7kNvgFSoKPs&_nc_oc=AdhiDj-GG4zKhzhaGYd4yhH4AxwD0EQ7M5iBNVRHLHAWzvWNKP_NTBVFVO8tgkquRbg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&oh=03_Q7cD1gG9FZdnKmTwzGlE9lUpk_Ao34RxjxvtGLWYYI2sluAY9Q&oe=67D8CCD3" alt="Cottage 5">
+            <h3>Cottage 5</h3>
+            <p>Big Pavilion cottage for any event</p>
+            <p class="price">1000k per night</p>
+            <p class="price">950h per day</p>
+        </div>
+
+        <!-- Google Maps Embed -->
+        <div id="mapContainer">
+            <h3>Location: Barangay Culandanum, Palawan</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <!-- Search Bar -->
+        <form id="searchForm">
+            <input type="text" id="cottageSearch" placeholder="Search for a cottage number (e.g. 1)">
+            <button type="submit">Search</button>
+        </form>
+    </section>
+
+    <script>
+        // Simple search functionality to hide/show cottages and map based on search term
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var searchTerm = document.getElementById('cottageSearch').value.toLowerCase();
+            var cottages = document.querySelectorAll('.cottage');
+            
+            // Hide all cottages and map by default
+            cottages.forEach(function(cottage) {
+                cottage.style.display = 'none';
+            });
+
+            // Check if the search term matches any cottage number and show the corresponding cottage
+            cottages.forEach(function(cottage) {
+                var cottageName = cottage.getAttribute('data-name').toLowerCase();
+                if (cottageName.includes(searchTerm)) {
+                    cottage.style.display = 'block';
+                }
+            });
+
+            // If "map" is searched, display the map container
+            if (searchTerm === "map") {
+                document.getElementById("mapContainer").style.display = 'block';
+            } else {
+                document.getElementById("mapContainer").style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
